@@ -1,0 +1,5 @@
+export const environment = {
+  production: false,
+  apiKeyOpenWeather: 'replace', // get your API KEY at https://home.openweathermap.org/api_keys
+  apiKeyYelp: 'replace', // get your API KEY at https://www.yelp.com/developers/v3/manage_app
+};
