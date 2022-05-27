@@ -1,0 +1,10 @@
+<label for="cityToAdd">Città</label>
+<input [(ngModel)]="cityToAdd" id="cityToAdd" type="text">
+<label for="countryCode">Nazione</label>
+<input [(ngModel)]="countryCode" id="countryCode" type="text">
+<button (click)="addCity()" *ngIf="canAddCity()">Add city</button>
+
+<div *ngFor="let forecastResponseEntry of forecastResponseArr">
+  <app-city-forecast [forecastResponse]="forecastResponseEntry">
+  </app-city-forecast>
+</div>

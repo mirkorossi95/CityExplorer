@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OpenWeatherService } from './services/open-weather.service';
 import { ForecastResponse } from './models/forecast-response';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  responseForecast5?: ForecastResponse;
+export class AppComponent {
+  forecastResponseArr: ForecastResponse[] = [];
+  cityToAdd = '';
+  countryCode = 'IT';
 
   constructor(private openWeatherService: OpenWeatherService) {}
 
-  ngOnInit(): void {
+  addCity() {
     this.openWeatherService
-      .directGeocoding('Pisa', 'IT', undefined, '1')
+      .directGeocoding(this.cityToAdd, this.countryCode, undefined, '1')
       .subscribe((resDG) => {
         this.openWeatherService
           .forecast5(
@@ -26,9 +29,19 @@ export class AppComponent implements OnInit {
             'IT'
           )
           .subscribe((resF5) => {
-            this.responseForecast5 = resF5;
+            this.resetInput();
+            this.forecastResponseArr.push(resF5);
             console.log(resF5);
           });
       });
+  }
+
+  resetInput() {
+    this.cityToAdd = '';
+    this.countryCode = 'IT';
+  }
+
+  canAddCity() {
+    return this.forecastResponseArr.length < environment.maxCitiesToShow;
   }
 }
