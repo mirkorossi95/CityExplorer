@@ -6,6 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+NOTE: you need to get your API KEYS for OpenWeather and Yelp and put them in `src/environments/environment.ts`, or any environment you want. See [OpenWheather](https://home.openweathermap.org/api_keys) and [Yelp](https://www.yelp.com/developers/v3/manage_app).
+
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
