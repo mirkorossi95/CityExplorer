@@ -1,6 +1,15 @@
+// get your Open Weather API KEY at https://home.openweathermap.org/api_keys
+// get your Yelp API KEY at https://www.yelp.com/developers/v3/manage_app
 export const environment = {
-  production: false,
-  apiKeyOpenWeather: 'replace', // get your API KEY at https://home.openweathermap.org/api_keys
-  apiKeyYelp: 'replace', // get your API KEY at https://www.yelp.com/developers/v3/manage_app
-  maxCitiesToShow: 5,
+  production: false, maxCitiesToShow: 5, openWeather: {
+    baseUrl: "https://api.openweathermap.org", apiKey: "replace", endpoint: {
+      forecast5: "/data/2.5/forecast", directGeocoding: "/geo/1.0/direct"
+    }
+  }, yelp: {
+    baseUrl: "https://api.yelp.com",
+    apiKey: "replace",
+    endpoint: {
+      businessesSearch: "/v3/businesses/search"
+    }
+  }
 };
