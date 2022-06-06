@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CommonService } from './common.service';
+import { BusinessesSearchResponse } from '../models/businesses-search-response';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class YelpService {
    * @returns business matching filter criteria
    */
   businessesSearch(latitude: string, longitude: string) {
-    return this.httpClient.get(
+    return this.httpClient.get<BusinessesSearchResponse>(
       environment.yelp.baseUrl +
         environment.yelp.endpoint.businessesSearch +
         CommonService.addParams([
