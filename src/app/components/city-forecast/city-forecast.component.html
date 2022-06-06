@@ -26,70 +26,91 @@
     </div>
   </div>
 
-  <div class="accordion" id="accordionMain">
-    <div *ngFor="let weatherEntry of forecastResponse.list; let ind = index" class="accordion-item">
-      <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name + ind }}">
-        <button [attr.aria-controls]="'collapseAccordion' + forecastResponse.city.name + ind"
-                [attr.data-bs-target]="'#collapseAccordion' + forecastResponse.city.name + ind"
+  <div class="accordion" id="accordionParent">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name }}">
+        <button [attr.aria-controls]="'collapseAccordion' + forecastResponse.city.name"
+                [attr.data-bs-target]="'#collapseAccordion' + forecastResponse.city.name"
                 aria-expanded="false"
                 class="accordion-button collapsed"
                 data-bs-toggle="collapse" type="button">
-          {{ weatherEntry.dt_txt + ' ' + weatherEntry.weather[0].description }}
+          {{ 'Previsioni meteo per ' + forecastResponse.city.name }}
         </button>
       </h2>
-      <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name + ind"
-           [attr.id]="'collapseAccordion' + forecastResponse.city.name + ind"
+      <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name"
+           [attr.id]="'collapseAccordion' + forecastResponse.city.name"
            class="accordion-collapse collapse"
-           data-bs-parent="#accordionMain">
+           data-bs-parent="#accordionParent">
         <div class="accordion-body">
-          <div class="row">
-            <div class="col-2">
-              <img [alt]="weatherEntry.weather[0].description"
-                   [src]="'http://openweathermap.org/img/wn/' + weatherEntry.weather[0].icon + '@2x.png'" />
-            </div>
-            <div class="col-2">
-              <label>Meteo</label>
-              <p>{{ weatherEntry.weather[0].description }}</p>
-            </div>
-            <div class="col-2">
-              <label>Orario</label>
-              <p>{{ weatherEntry.dt_txt }}</p>
-            </div>
-            <div class="col-2">
-              <label>Temperatura (°C)</label>
-              <p>{{ weatherEntry.main.temp }}</p>
-            </div>
-            <div class="col-2">
-              <label>Temperatura percepita (°C)</label>
-              <p>{{ weatherEntry.main.feels_like }}</p>
-            </div>
-            <div class="col-2">
-              <label>Pressione (hPa)</label>
-              <p>{{ weatherEntry.main.grnd_level }}</p>
-            </div>
-            <div class="col-2">
-              <label>Umidità (%)</label>
-              <p>{{ weatherEntry.main.humidity }}</p>
-            </div>
-            <div class="col-2">
-              <label>Nuvolosità (%)</label>
-              <p>{{ weatherEntry.clouds.all }}</p>
-            </div>
-            <div class="col-2">
-              <label>Velocità del vento (m/s)</label>
-              <p>{{ weatherEntry.wind.speed }}</p>
-            </div>
-            <div class="col-2">
-              <label>Direzione del vento (°)</label>
-              <p>{{ weatherEntry.wind.deg }}</p>
-            </div>
-            <div class="col-2">
-              <label>Visibilità (m)</label>
-              <p>{{ weatherEntry.visibility }}</p>
-            </div>
-            <div class="col-2">
-              <label>Probabilità di precipitazioni (%)</label>
-              <p>{{ weatherEntry.pop }}</p>
+
+          <div class="accordion" id="accordionMain">
+            <div *ngFor="let weatherEntry of forecastResponse.list; let ind = index" class="accordion-item">
+              <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name + ind }}">
+                <button [attr.aria-controls]="'collapseAccordion' + forecastResponse.city.name + ind"
+                        [attr.data-bs-target]="'#collapseAccordion' + forecastResponse.city.name + ind"
+                        aria-expanded="false"
+                        class="accordion-button collapsed"
+                        data-bs-toggle="collapse" type="button">
+                  {{ weatherEntry.dt_txt + ' ' + weatherEntry.weather[0].description }}
+                </button>
+              </h2>
+              <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name + ind"
+                   [attr.id]="'collapseAccordion' + forecastResponse.city.name + ind"
+                   class="accordion-collapse collapse"
+                   data-bs-parent="#accordionMain">
+                <div class="accordion-body">
+                  <div class="row">
+                    <div class="col-2">
+                      <img [alt]="weatherEntry.weather[0].description"
+                           [src]="'http://openweathermap.org/img/wn/' + weatherEntry.weather[0].icon + '@2x.png'" />
+                    </div>
+                    <div class="col-2">
+                      <label>Meteo</label>
+                      <p>{{ weatherEntry.weather[0].description }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Orario</label>
+                      <p>{{ weatherEntry.dt_txt }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Temperatura (°C)</label>
+                      <p>{{ weatherEntry.main.temp }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Temperatura percepita (°C)</label>
+                      <p>{{ weatherEntry.main.feels_like }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Pressione (hPa)</label>
+                      <p>{{ weatherEntry.main.grnd_level }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Umidità (%)</label>
+                      <p>{{ weatherEntry.main.humidity }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Nuvolosità (%)</label>
+                      <p>{{ weatherEntry.clouds.all }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Velocità del vento (m/s)</label>
+                      <p>{{ weatherEntry.wind.speed }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Direzione del vento (°)</label>
+                      <p>{{ weatherEntry.wind.deg }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Visibilità (m)</label>
+                      <p>{{ weatherEntry.visibility }}</p>
+                    </div>
+                    <div class="col-2">
+                      <label>Probabilità di precipitazioni (%)</label>
+                      <p>{{ weatherEntry.pop }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
