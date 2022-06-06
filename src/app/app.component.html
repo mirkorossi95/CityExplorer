@@ -1,8 +1,28 @@
-<label for="cityToAdd">Città</label>
-<input [(ngModel)]="cityToAdd" id="cityToAdd" type="text">
-<label for="countryCode">Nazione</label>
-<input [(ngModel)]="countryCode" id="countryCode" type="text">
-<button (click)="addCity()" *ngIf="canAddCity()">Add city</button>
+<div class="row insert-row">
+  <div class="col-4"></div>
+  <div class="col-2">
+    <label for="cityToAdd">Città</label>
+    <input [(ngModel)]="cityToAdd" id="cityToAdd" type="text">
+  </div>
+  <div class="col-2">
+    <label for="countryCode">Nazione</label>
+    <input [(ngModel)]="countryCode" id="countryCode" type="text">
+  </div>
+</div>
+<div class="row insert-row">
+  <div class="col-5"></div>
+  <div class="col-2">
+    <button (click)="addCity()" *ngIf="canAddCity()" class="max-width">Add city</button>
+  </div>
+</div>
+
+<div *ngIf="forecastResponseArr.length === 0" class="text-center">
+  <p>Inserisci una città di cui vuoi ottenere informazioni</p>
+</div>
+
+<div *ngIf="forecastResponseArr.length!== 0" class="text-center">
+  <p>Puoi aggiungere fino a 5 città</p>
+</div>
 
 <div *ngFor="let forecastResponseEntry of forecastResponseArr" class="forecast-main-box">
   <app-city-forecast [forecastResponse]="forecastResponseEntry">
