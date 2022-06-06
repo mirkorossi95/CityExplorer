@@ -4,7 +4,7 @@
 <input [(ngModel)]="countryCode" id="countryCode" type="text">
 <button (click)="addCity()" *ngIf="canAddCity()">Add city</button>
 
-<div *ngFor="let forecastResponseEntry of forecastResponseArr">
+<div *ngFor="let forecastResponseEntry of forecastResponseArr" class="forecast-main-box">
   <app-city-forecast [forecastResponse]="forecastResponseEntry">
   </app-city-forecast>
 </div>

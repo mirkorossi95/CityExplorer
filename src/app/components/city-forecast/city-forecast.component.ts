@@ -17,4 +17,9 @@ export class CityForecastComponent implements OnInit {
   ngOnInit(): void {
     //
   }
+
+  getTimezone(input: number) {
+    const hours = input / 3600;
+    return 'GMT+' + hours;
+  }
 }

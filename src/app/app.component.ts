@@ -26,7 +26,7 @@ export class AppComponent {
         const lat = String(resDG[0].lat);
         const lon = String(resDG[0].lon);
         this.openWeatherService
-          .forecast5(lat, lon, undefined, undefined, undefined, 'IT')
+          .forecast5(lat, lon, 'metric', undefined, undefined, 'IT')
           .subscribe((resF5) => {
             this.resetInput();
             this.forecastResponseArr.push(resF5);
