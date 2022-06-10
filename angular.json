@@ -108,5 +108,7 @@
       }
     }
   },
-  "defaultProject": "CityExplorer"
+  "cli": {
+    "analytics": false
+  }
 }
