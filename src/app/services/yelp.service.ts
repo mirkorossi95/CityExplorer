@@ -16,15 +16,17 @@ export class YelpService {
    * See [https://www.yelp.com/developers/documentation/v3/business_search](https://www.yelp.com/developers/documentation/v3/business_search) for more optional params.
    * @param latitude required -- Latitude of the location you want to search nearby.
    * @param longitude required -- Longitude of the location you want to search nearby.
+   * @param locale optional -- Specify the locale into which to localize the business information.
    * @returns business matching filter criteria
    */
-  businessesSearch(latitude: string, longitude: string) {
+  businessesSearch(latitude: string, longitude: string, locale: string) {
     return this.httpClient.get<BusinessesSearchResponse>(
       environment.yelp.baseUrl +
         environment.yelp.endpoint.businessesSearch +
         CommonService.addParams([
           { name: 'latitude', value: latitude },
           { name: 'longitude', value: longitude },
+          { name: 'locale', value: locale },
         ])
     );
   }

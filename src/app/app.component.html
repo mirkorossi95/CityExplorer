@@ -16,15 +16,18 @@
   </div>
 </div>
 
-<div *ngIf="forecastResponseArr.length === 0" class="text-center">
+<div *ngIf="citiesArr.length === 0" class="text-center">
   <p>Inserisci una città di cui vuoi ottenere informazioni</p>
 </div>
 
-<div *ngIf="forecastResponseArr.length!== 0" class="text-center">
+<div *ngIf="citiesArr.length!== 0" class="text-center">
   <p>Puoi aggiungere fino a 5 città</p>
 </div>
 
-<div *ngFor="let forecastResponseEntry of forecastResponseArr" class="forecast-main-box">
-  <app-city-forecast [forecastResponse]="forecastResponseEntry">
+<div *ngFor="let city of citiesArr" class="forecast-main-box">
+  <app-city-forecast [forecastResponse]="city.forecastResponse">
   </app-city-forecast>
+  <app-city-businesses [businessesSearchResponse]="city.businessesSearch"
+                       [cityName]="city.forecastResponse?.city?.name">
+  </app-city-businesses>
 </div>

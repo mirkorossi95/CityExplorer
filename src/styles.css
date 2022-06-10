@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.city-box {
+  margin: 32px;
+  border: 4px inset;
+}
+
+.city-row {
+  margin-top: 8px;
+}

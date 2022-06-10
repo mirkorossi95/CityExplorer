@@ -1,4 +1,4 @@
-<div *ngIf="forecastResponse" class="forecast-city-box">
+<div *ngIf="forecastResponse" class="city-box">
   <div class="row">
     <div class="col-2">
       <label>Città</label>
@@ -10,11 +10,11 @@
     </div>
     <div class="col-2">
       <label>Latitudine</label>
-      <p>{{ forecastResponse.city.coord.lat }}</p>
+      <p>{{ forecastResponse.city.coord.lat.toFixed(2) }}</p>
     </div>
     <div class="col-2">
       <label>Longitudine</label>
-      <p>{{ forecastResponse.city.coord.lon }}</p>
+      <p>{{ forecastResponse.city.coord.lon.toFixed(2) }}</p>
     </div>
     <div class="col-2">
       <label>Popolazione</label>
@@ -26,28 +26,28 @@
     </div>
   </div>
 
-  <div class="accordion" id="accordionParent">
+  <div class="accordion" id="accordionForecastParent">
     <div class="accordion-item">
       <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name }}">
-        <button [attr.aria-controls]="'collapseAccordion' + forecastResponse.city.name"
-                [attr.data-bs-target]="'#collapseAccordion' + forecastResponse.city.name"
+        <button [attr.aria-controls]="'collapseForecastAccordion' + forecastResponse.city.name"
+                [attr.data-bs-target]="'#collapseForecastAccordion' + forecastResponse.city.name"
                 aria-expanded="false"
                 class="accordion-button collapsed"
                 data-bs-toggle="collapse" type="button">
-          {{ 'Previsioni meteo per ' + forecastResponse.city.name }}
+          {{ 'Previsioni meteo a ' + forecastResponse.city.name }}
         </button>
       </h2>
       <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name"
-           [attr.id]="'collapseAccordion' + forecastResponse.city.name"
+           [attr.id]="'collapseForecastAccordion' + forecastResponse.city.name"
            class="accordion-collapse collapse"
-           data-bs-parent="#accordionParent">
+           data-bs-parent="#accordionForecastParent">
         <div class="accordion-body">
 
-          <div class="accordion" id="accordionMain">
+          <div class="accordion" id="accordionForecastMain">
             <div *ngFor="let weatherEntry of forecastResponse.list; let ind = index" class="accordion-item">
               <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name + ind }}">
-                <button [attr.aria-controls]="'collapseAccordion' + forecastResponse.city.name + ind"
-                        [attr.data-bs-target]="'#collapseAccordion' + forecastResponse.city.name + ind"
+                <button [attr.aria-controls]="'collapseForecastAccordion' + forecastResponse.city.name + ind"
+                        [attr.data-bs-target]="'#collapseForecastAccordion' + forecastResponse.city.name + ind"
                         aria-expanded="false"
                         class="accordion-button collapsed"
                         data-bs-toggle="collapse" type="button">
@@ -55,9 +55,9 @@
                 </button>
               </h2>
               <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name + ind"
-                   [attr.id]="'collapseAccordion' + forecastResponse.city.name + ind"
+                   [attr.id]="'collapseForecastAccordion' + forecastResponse.city.name + ind"
                    class="accordion-collapse collapse"
-                   data-bs-parent="#accordionMain">
+                   data-bs-parent="#accordionForecastMain">
                 <div class="accordion-body">
                   <div class="row">
                     <div class="col-2">
