@@ -13,7 +13,7 @@ export class CityHttpInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (req.url.includes(environment.yelp.baseUrl)) {
-      const newReq = req.clone({
+      const newReq: HttpRequest<any> = req.clone({
         headers: req.headers.set(
           'Authorization',
           `Bearer ${environment.yelp.apiKey}`

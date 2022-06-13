@@ -52,6 +52,10 @@ export class AppComponent {
   }
 
   canAddCity(): boolean {
-    return this.citiesArr.length < environment.maxCitiesToShow;
+    return (
+      this.citiesArr.length < environment.maxCitiesToShow &&
+      !!this.cityToAdd &&
+      !!this.countryCode
+    );
   }
 }

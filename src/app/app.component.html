@@ -1,18 +1,19 @@
 <div class="row insert-row">
   <div class="col-4"></div>
   <div class="col-2">
-    <label for="cityToAdd">Città</label>
-    <input [(ngModel)]="cityToAdd" id="cityToAdd" type="text">
+    <label class="m-2" for="cityToAdd">Città</label>
+    <input [(ngModel)]="cityToAdd" class="form-control" id="cityToAdd" type="text">
   </div>
   <div class="col-2">
-    <label for="countryCode">Nazione</label>
-    <input [(ngModel)]="countryCode" id="countryCode" type="text">
+    <label class="m-2" for="countryCode">Nazione</label>
+    <input [(ngModel)]="countryCode" class="form-control" id="countryCode" type="text">
   </div>
 </div>
 <div class="row insert-row">
   <div class="col-5"></div>
   <div class="col-2">
-    <button (click)="addCity()" *ngIf="canAddCity()" class="max-width">Add city</button>
+    <button (click)="addCity()" [disabled]="!canAddCity()" class="max-width btn btn-dark" type="button">Add city
+    </button>
   </div>
 </div>
 

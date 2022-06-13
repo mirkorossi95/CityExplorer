@@ -14,8 +14,8 @@ export class CityForecastComponent {
     //
   }
 
-  getTimezone(input: number) {
-    const hours = input / 3600;
+  getTimezone(input: number): string {
+    const hours: number = input / 3600;
     return 'GMT+' + hours;
   }
 }

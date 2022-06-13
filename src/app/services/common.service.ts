@@ -9,10 +9,10 @@ export class CommonService {
     //
   }
 
-  static addParams(params: Param[]) {
-    let ret = '';
-    let first = true;
-    params.forEach((param) => {
+  static addParams(params: Param[]): string {
+    let ret: string = '';
+    let first: boolean = true;
+    params.forEach((param: Param) => {
       if (param.value !== undefined) {
         ret += (first ? '?' : '&') + param.name + '=' + param.value;
         first = false;
