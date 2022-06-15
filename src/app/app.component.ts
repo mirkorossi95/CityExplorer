@@ -16,6 +16,8 @@ export class AppComponent {
   citiesArr: CityDetails[] = [];
   cityToAdd: string = '';
   countryCode: string = 'IT';
+  namePhoto: string = '';
+  urlPhoto: string = '';
 
   constructor(
     private openWeatherService: OpenWeatherService,
@@ -46,16 +48,21 @@ export class AppComponent {
       });
   }
 
-  resetInput(): void {
-    this.cityToAdd = '';
-    this.countryCode = 'IT';
-  }
-
   canAddCity(): boolean {
     return (
       this.citiesArr.length < environment.maxCitiesToShow &&
       !!this.cityToAdd &&
       !!this.countryCode
     );
+  }
+
+  setModalData(event: any): void {
+    this.namePhoto = event.namePhoto;
+    this.urlPhoto = event.urlPhoto;
+  }
+
+  private resetInput(): void {
+    this.cityToAdd = '';
+    this.countryCode = 'IT';
   }
 }

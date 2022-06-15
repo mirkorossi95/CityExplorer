@@ -28,7 +28,10 @@
 <div *ngFor="let city of citiesArr" class="forecast-main-box">
   <app-city-forecast [forecastResponse]="city.forecastResponse">
   </app-city-forecast>
-  <app-city-businesses [businessesSearchResponse]="city.businessesSearch"
+  <app-city-businesses (setModalData)="setModalData($event)"
+                       [businessesSearchResponse]="city.businessesSearch"
                        [cityName]="city.forecastResponse?.city?.name">
   </app-city-businesses>
 </div>
+
+<app-city-businesses-photo-modal [namePhoto]="namePhoto" [urlPhoto]="urlPhoto"></app-city-businesses-photo-modal>

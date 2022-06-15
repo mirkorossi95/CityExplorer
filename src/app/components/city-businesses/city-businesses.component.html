@@ -1,5 +1,5 @@
 <div *ngIf="businessesSearchResponse" class="city-box">
-  <div class="accordion" id="accordionBusinessesParent">
+  <div class="accordion" id="{{'accordionBusinessesParent' + cityName}}">
     <div class="accordion-item">
       <h2 class="accordion-header" id="{{ 'businessesAccordion' + cityName }}">
         <button [attr.aria-controls]="'collapseBusinessesAccordion' + cityName"
@@ -11,12 +11,12 @@
         </button>
       </h2>
       <div [attr.aria-labelledby]="'businessesAccordion' + cityName"
+           [attr.data-bs-parent]="'#accordionBusinessesParent' + cityName"
            [attr.id]="'collapseBusinessesAccordion' + cityName"
-           class="accordion-collapse collapse"
-           data-bs-parent="#accordionBusinessesParent">
+           class="accordion-collapse collapse">
         <div class="accordion-body">
 
-          <div class="accordion" id="accordionBusinessesMain">
+          <div class="accordion" id="{{'accordionBusinessesMain' + cityName}}">
             <div *ngFor="let businessEntry of businessesSearchResponse.businesses; let ind = index"
                  class="accordion-item">
               <h2 class="accordion-header" id="{{ 'businessesAccordion' + cityName + ind }}">
@@ -29,9 +29,9 @@
                 </button>
               </h2>
               <div [attr.aria-labelledby]="'businessesAccordion' + cityName + ind"
+                   [attr.data-bs-parent]="'#accordionBusinessesMain' + cityName"
                    [attr.id]="'collapseBusinessesAccordion' + cityName + ind"
-                   class="accordion-collapse collapse"
-                   data-bs-parent="#accordionBusinessesMain">
+                   class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <div class="row">
                     <div class="col-2">
@@ -75,9 +75,10 @@
                       <p>{{ businessEntry.coordinates.longitude.toFixed(2) }}</p>
                     </div>
                     <div class="col-2">
-                      <button (click)="setModalData(businessEntry.name, businessEntry.image_url)"
-                              class="btn btn-primary" data-bs-target="#photoModal" data-bs-toggle="modal"
-                              type="button">Foto
+                      <button
+                        (click)="setModalDataFn({namePhoto: businessEntry.name, urlPhoto: businessEntry.image_url})"
+                        class="btn btn-primary" data-bs-target="#photoModal" data-bs-toggle="modal"
+                        type="button">Foto
                       </button>
                     </div>
                     <div class="col-2">
@@ -89,21 +90,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="photoModal" tabindex="-1">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{ 'Foto di ' + name }}</h5>
-        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
-      </div>
-      <div class="modal-body">
-        <img [alt]="'Foto di ' + url"
-             [src]="url"/>
       </div>
     </div>
   </div>

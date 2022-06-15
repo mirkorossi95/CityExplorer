@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="accordion" id="accordionForecastParent">
+  <div class="accordion" id="{{'accordionForecastParent' + forecastResponse.city.name}}">
     <div class="accordion-item">
       <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name }}">
         <button [attr.aria-controls]="'collapseForecastAccordion' + forecastResponse.city.name"
@@ -38,12 +38,12 @@
         </button>
       </h2>
       <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name"
+           [attr.data-bs-parent]="'#accordionForecastParent' + forecastResponse.city.name"
            [attr.id]="'collapseForecastAccordion' + forecastResponse.city.name"
-           class="accordion-collapse collapse"
-           data-bs-parent="#accordionForecastParent">
+           class="accordion-collapse collapse">
         <div class="accordion-body">
 
-          <div class="accordion" id="accordionForecastMain">
+          <div class="accordion" id="{{'accordionForecastMain' + forecastResponse.city.name}}">
             <div *ngFor="let weatherEntry of forecastResponse.list; let ind = index" class="accordion-item">
               <h2 class="accordion-header" id="{{ 'forecastAccordion' + forecastResponse.city.name + ind }}">
                 <button [attr.aria-controls]="'collapseForecastAccordion' + forecastResponse.city.name + ind"
@@ -55,14 +55,14 @@
                 </button>
               </h2>
               <div [attr.aria-labelledby]="'forecastAccordion' + forecastResponse.city.name + ind"
+                   [attr.data-bs-parent]="'#accordionForecastMain' + forecastResponse.city.name"
                    [attr.id]="'collapseForecastAccordion' + forecastResponse.city.name + ind"
-                   class="accordion-collapse collapse"
-                   data-bs-parent="#accordionForecastMain">
+                   class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <div class="row">
                     <div class="col-2">
                       <img [alt]="weatherEntry.weather[0].description"
-                           [src]="'http://openweathermap.org/img/wn/' + weatherEntry.weather[0].icon + '@2x.png'" />
+                           [src]="'http://openweathermap.org/img/wn/' + weatherEntry.weather[0].icon + '@2x.png'"/>
                     </div>
                     <div class="col-2">
                       <label>Meteo</label>

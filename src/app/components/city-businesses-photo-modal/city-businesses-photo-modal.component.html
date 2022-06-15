@@ -1,0 +1,14 @@
+<div class="modal fade" id="photoModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'Foto di ' + namePhoto }}</h5>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+      </div>
+      <div class="modal-body">
+        <img [alt]="'Foto di ' + urlPhoto"
+             [src]="urlPhoto"/>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   BusinessesSearchResponse,
   Category,
@@ -10,17 +10,18 @@ import {
   styleUrls: ['./city-businesses.component.css'],
 })
 export class CityBusinessesComponent {
-  @Input()
-  businessesSearchResponse?: BusinessesSearchResponse;
+  @Input() businessesSearchResponse?: BusinessesSearchResponse;
 
-  @Input()
-  cityName?: string;
+  @Input() cityName?: string;
 
-  name: string = '';
-  url: string = '';
+  @Output() setModalData: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     //
+  }
+
+  setModalDataFn(value: any): void {
+    this.setModalData.emit(value);
   }
 
   getCategories(categories: Category[]): string {
@@ -29,10 +30,5 @@ export class CityBusinessesComponent {
       res += (res ? ', ' : '') + category.title;
     });
     return res;
-  }
-
-  setModalData(name: string, url: string): void {
-    this.name = name;
-    this.url = url;
   }
 }
